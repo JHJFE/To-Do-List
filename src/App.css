@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  width: 393px;
+  height: 852px;
+  border: 1px solid black;
+
 }
 
 .App-logo {
@@ -36,4 +39,34 @@
   100% {
     transform: translateY(0px);
   }
+}
+.row-arrange{
+  display: flex;
+  flex-direction: row;
+}
+.add-button{
+  margin: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--brown);
+  font-weight: bolder;
+}
+.modal-input{
+background: transparent;
+color:var(--beige);
+border-radius: 15px;
+}
+.button-position-center{
+  display: flex;
+  justify-content: center;
+}
+.button{
+  width: 40px;
+  height: 25px;
+}
+.container-center{
+  display: flex;
+  justify-content: center;
+  margin-top: 17px;
 }
