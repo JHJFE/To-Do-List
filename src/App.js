@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import GlobalStyles from "./styles/GlobalStyles.styles";
-import Nav from './components/nav/nav.js';
-import FavoriteList from './components/list/favorite-list';
+import Nav from './components/nav/nav.js'
+import Loading from './pages/loading';
+
 function App() {
+  let [isLoaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => { setLoaded(true) }, 100)
+  }, [])
+
   return (
     <>
       <GlobalStyles />
       <div className="App">
-        <Nav />
-        <FavoriteList/>
+        {isLoaded ? 
+        <>
+          <Nav />
+        </>
+        : 
+        <Loading />}
+
       </div>
     </>
   );
 }
 // 
+
 export default App;

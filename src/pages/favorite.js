@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector,useDispatch } from "react-redux";
-import { remove, IsCreate } from "../../store/store";
-import List from "../list";
-import { Daymark, Weekmark, Monthmark } from "../marks";
-import ModalList from "../modal-list";
+import List from "../components/list/list";
+import { Daymark, Weekmark, Monthmark } from "../components/marks";
+import ModalList from "../components/modal-list";
+import AddClick from "../components/addButton";
 
 const Ul = styled.ul`
 display: flex;
@@ -19,12 +19,13 @@ width: 30px;
 position: relative;
 `
 
-function FavoriteList() {
-    let favoritesData = useSelector((state) => { return state.favorites })
+function Favorite() {
+    let favoritesData = useSelector((state) => { return state.data.favorites })
     let stateData = useSelector(state=>state.CU_state)
+ 
     let isCreate = stateData.isCreate
-    console.log(stateData)
-    let dispatch = useDispatch();
+
+    console.log(favoritesData)
     // favorites 데이터 담김
     return (
         <main>
@@ -32,7 +33,7 @@ function FavoriteList() {
                 {favoritesData.map((el) => {
                     return (
                         <section key = {el.id} style={{ marginTop: '17px'}}>
-                            <List remove={remove} listData = {el} />
+                            <List listData = {el} />
                             <MarkContainer>
                                 <Daymark />
                                 <Weekmark />
@@ -42,10 +43,10 @@ function FavoriteList() {
                     )
                 })}
             </Ul>
-            <div onClick={()=>{dispatch(IsCreate())}} className="add-button">+</div>
-            {isCreate? <ModalList/>:null}
+            <AddClick/>
+            {isCreate? <ModalList about = 'favorites'/>:null}
            
         </main>
     )
 }
-export default FavoriteList
+export default Favorite

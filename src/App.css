@@ -70,3 +70,13 @@ border-radius: 15px;
   justify-content: center;
   margin-top: 17px;
 }
+.loading-container{
+
+}
+.loading-img{ 
+  background-image: url('./assets/passion.png');
+  background-size: contain;
+  background-position: center;
+  height: 200px;
+  background-repeat: no-repeat; 
+}

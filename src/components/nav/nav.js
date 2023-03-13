@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Toggle from "./toggle";
+import { Routes, Route, Link } from 'react-router-dom'
+import CalendarPage from '../../pages/calendar'
+import Favorite from "../../pages/favorite";
 
 const NavContainer = styled.nav`
 display: flex;
@@ -35,12 +38,19 @@ function Nav() {
         <>
             <NavContainer>
                 <NavMenuContainer>
-                    <NavMenu>Calendar</NavMenu>
-                    <NavMenu>Favorites</NavMenu>
+                    <NavMenu>
+                        <Link to='/calendar'>Calendar</Link>
+                    </NavMenu>
+                    <NavMenu>
+                        <Link to='/favorit'>Favorite</Link>
+                    </NavMenu>
                 </NavMenuContainer>
                 <Toggle />
             </NavContainer>
-           
+            <Routes>
+                <Route path='/calendar' element={<CalendarPage />} />
+                <Route path='/favorit' element={<Favorite />} />
+            </Routes>
         </>
     )
 }

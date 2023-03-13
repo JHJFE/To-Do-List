@@ -23,16 +23,16 @@ const ModalContainer = styled.section`
 `   
 
 
-function ModalList() {
-    let favoriteState = useSelector((state) => state.favorites)
-    let id = favoriteState.length
+function ModalList({about}) {
+    let data = useSelector((state) => state.data)
+    let id
+    id = about === 'favorites' ? data.favorites.length:null
     let dispatch = useDispatch();
 
     let [text, setText] = useState('');
     let [type, setType] = useState('');
 
     const textContent = (e) => {
-
         setText(e.target.value)
     }
     const typeContent = (e) => {
@@ -49,7 +49,7 @@ function ModalList() {
             내용:
             <textarea placeholder="내용 입력" className="modal-input" rows="4" cols="50" onChange={textContent} />
             Type:
-            <textarea placeholder="Day, Week, Month 중 하나 입력" className="modal-input" onChange={typeContent} />
+            <textarea placeholder="favorites, Day, Week, Month 중 하나 입력" className="modal-input" onChange={typeContent} />
             <div className="container-center">
                 <button className="button" onClick={Addhandler}>ADD</button>
             </div>
