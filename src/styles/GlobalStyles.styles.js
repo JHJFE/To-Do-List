@@ -8,7 +8,11 @@ const GlobalStyles = createGlobalStyle`
         --day:#364968;
         --week:#FDDF97;
         --month:#E09664;
-        --modal:#6C4343
+
+        --darkgray:#567189;
+        --modal:#6C4343;
+        --label:#7B8FA1;
+        --hover:#D8D8D8;
     }
     ${reset}
     *{

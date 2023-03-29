@@ -55,7 +55,7 @@ function List({ listData}) {
     let [isUpdate,setIsUpdate] = useState(isUpdateInitial)
 
     const removeHandler = (data) => {
-        console.log('삭제')
+       
         dispatch(remove(data))
     }
     const updateHandler = (e)=>{

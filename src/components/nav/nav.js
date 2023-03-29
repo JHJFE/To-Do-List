@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Toggle from "./toggle";
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import CalendarPage from '../../pages/calendar'
 import Favorite from "../../pages/favorite";
+import { useSelector } from "react-redux";
 
 const NavContainer = styled.nav`
 display: flex;
@@ -16,6 +17,10 @@ width: 393px;
 height: 52px;
 margin-top: 62px; // calc((62px/852px)*100%); 이거 어떻게 사용하는지 아름님한테 내일 물어보자
 //border: 1px solid blue;
+transition: all 1s;
+&.darkgray{
+background-color: var(--day);
+}
 `
 
 const NavMenuContainer = styled.section`
@@ -34,23 +39,28 @@ font-weight: bolder;
 `
 //height: calc(700px / 100vh * 100%) ; calc 사용 예시!
 function Nav() {
+    let mode = useSelector((state)=>state.mode)
+    console.log(mode)
     return (
         <>
-            <NavContainer>
+            <NavContainer className = {mode ?null:'darkgray'}>
                 <NavMenuContainer>
                     <NavMenu>
                         <Link to='/calendar'>Calendar</Link>
                     </NavMenu>
                     <NavMenu>
-                        <Link to='/favorit'>Favorite</Link>
+                        <Link to='/favorite'>Favorite</Link>
                     </NavMenu>
                 </NavMenuContainer>
                 <Toggle />
             </NavContainer>
-            <Routes>
-                <Route path='/calendar' element={<CalendarPage />} />
-                <Route path='/favorit' element={<Favorite />} />
-            </Routes>
+            <div className="main">
+                <Routes >
+                    <Route path='/' element={<Navigate replace to='/calendar' />} />
+                    <Route path='/calendar' element={<CalendarPage />} />
+                    <Route path='/favorite' element={<Favorite />} />
+                </Routes>
+            </div>
         </>
     )
 }

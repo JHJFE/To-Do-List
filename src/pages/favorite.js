@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import List from "../components/list/list";
 import { Daymark, Weekmark, Monthmark } from "../components/marks";
 import ModalList from "../components/modal-list";
@@ -22,11 +22,8 @@ position: relative;
 function Favorite() {
     let favoritesData = useSelector((state) => { return state.data.favorites })
     let stateData = useSelector(state=>state.CU_state)
- 
     let isCreate = stateData.isCreate
 
-    console.log(favoritesData)
-    // favorites 데이터 담김
     return (
         <main>
             <Ul>

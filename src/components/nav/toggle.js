@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Change } from "../../store/store";
 const ToggleContainer = styled.div`
   position: relative;
 
@@ -27,20 +29,17 @@ const ToggleContainer = styled.div`
 
     &.toggle--checked{
       -webkit-transform:  translateX(24px);
-      
+      background-color: var(--day);
     }
   }
 `;
 
-const Desc = styled.div`
-  color:black;
-  display: flex;
-  text-align: center;
-`;
 
 function Toggle() {
+    const dispatch = useDispatch()
     const [isOn, setisOn] = useState(false);
     const toggleHandler = () => {
+        dispatch(Change())
         setisOn(!isOn)
     };
 
@@ -48,7 +47,7 @@ function Toggle() {
         <>
             <ToggleContainer onClick={toggleHandler} >
                 <div className= 'toggle-container' />
-                <div className={isOn ? 'toggle-circle toggle--checked' : 'toggle-circle'} />
+                <div className={isOn ? 'toggle-circle toggle--checked darkgray' : 'toggle-circle'} />
             </ToggleContainer>
         </>
     );

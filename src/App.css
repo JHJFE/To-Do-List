@@ -2,9 +2,11 @@
   width: 393px;
   height: 852px;
   border: 1px solid black;
-
+  overflow: scroll; 
 }
-
+.App::-webkit-scrollbar {
+  display: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -79,4 +81,42 @@ border-radius: 15px;
   background-position: center;
   height: 200px;
   background-repeat: no-repeat; 
+}
+.column-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.row-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.test {
+  width:393px
+}
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: flex;
+  margin-left: 1px;
+}
+.day-dot{
+  background-color: var(--day);
+}
+.week-dot{
+  background-color: var(--week);
+}
+.month-dot{
+  background-color: var(--month);
+}
+.main{
+
+}
+.darkgray{
+  transition: all 1s;
+  background-color: var(--darkgray);
 }
