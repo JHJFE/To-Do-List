@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
         --month:#E09664;
 
         --darkgray:#567189;
-        --modal:#6C4343;
+        --modal:#A9907E;
         --label:#7B8FA1;
         --hover:#D8D8D8;
     }

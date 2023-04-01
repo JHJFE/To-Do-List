@@ -48,9 +48,9 @@ const ListTitle = styled.div`
 display: flex;
 align-items : center;
 background-color: var(--beige);
-width: 393px;
+width: 391px;
 height: 52px;
-margin-top: 62px; 
+margin-top: 32px; 
 padding: 20px;
 margin-bottom: 20px;
 &.dark{
@@ -66,7 +66,6 @@ font-weight: bolder;
 &.dark{
     color: var(--beige);
 }
-
 `
 const CalendarPage = () => {
     const [now, setNow] = useState(new Date())
@@ -88,18 +87,18 @@ const CalendarPage = () => {
 
     let isCreate = useSelector(state => state.CU_state).isCreate
 
-    const dayClickHandler = (date) =>{
-        planedDates.includes(date) ? setIsToDO(true):setIsToDO(false) // 일정있으면 isToDO true로
+    const dayClickHandler = (date) => {
+        planedDates.includes(date) ? setIsToDO(true) : setIsToDO(false) // 일정있으면 isToDO true로
         setClickedDate(date)
         //console.log(planedDates.includes(date))
         //console.log(isToDo)
     }
 
-    
+
     return (
         <div>
             <CalendarContainer>
-                <Calendar locale='en' onClickDay={(date)=>{ dayClickHandler(moment(date).format("YYYY-MM-DD"))}} onChange={setNow} value={now} defaultValue={new Date()}
+                <Calendar locale='en' onClickDay={(date) => { dayClickHandler(moment(date).format("YYYY-MM-DD")) }} onChange={setNow} value={now} defaultValue={new Date()}
                     tileContent={({ date, view }) => {
                         const check = [false, false, false]
                         const formedDate = moment(date).format("YYYY-MM-DD")
@@ -123,8 +122,12 @@ const CalendarPage = () => {
                             </div>
                         )
                     }} />
+                   
             </CalendarContainer>
-            {isToDo ? <Modal date = {clickedDate}/> : null}
+            <div className='container-center'>
+                {isToDo ? <Modal date={clickedDate} /> : null}
+            </div>
+
             <ListTitle className={mode ? null : 'dark'} >
                 <Title className={mode ? null : 'dark'}> Today</Title>
             </ListTitle >
@@ -134,7 +137,6 @@ const CalendarPage = () => {
                 })}
             </Ul>
 
-
             <ListTitle className={mode ? null : 'dark'}>
                 <Title className={mode ? null : 'dark'}> Week</Title>
             </ListTitle>
@@ -143,8 +145,7 @@ const CalendarPage = () => {
                     return <List key={el.id} listData={el} />
                 })}
             </Ul>
-
-
+                
             <ListTitle className={mode ? null : 'dark'}>
                 <Title className={mode ? null : 'dark'}> Month</Title>
             </ListTitle>
@@ -153,7 +154,7 @@ const CalendarPage = () => {
                     return <List key={el.id} listData={el} />
                 })}
             </Ul>
-
+                
             <AddClick />
             {isCreate ? <ModalList about='favorites' /> : null}
         </div>

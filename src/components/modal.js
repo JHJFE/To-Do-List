@@ -1,23 +1,30 @@
 import styled from "styled-components"
 import { useSelector } from "react-redux"
-import { useState } from "react"
+
 const ModalContainer = styled.section`// position 어떻게 줄지 생각해봐야할듯
-width:149xp;
-height:182px ;
+width:300px;
+height:100px;
 background-color: var(--modal);
 padding: 10px;
-margin: 10px;
+margin-top: 10px;
+border-radius: 20px;
+`
+const Date = styled.div`
+font-size: 14px;
+color: #675d50;
 `
 const ShortList = styled.li`
+font-size: 12px;
 margin: 10px;
 color:white;
-&.day{
-    color: var(--day)
-}
-&.week{
+&.day::marker{
+        color: var(--day)
+    }
+
+&.week::marker{
     color: var(--week)
 }
-&.month{
+&.month::marker{
     color: var(--month)
 }
 `
@@ -41,6 +48,7 @@ const Modal = ({ date }) => { // data 안에는 일,주,월 계획인지 분류�
 
     return (
         <ModalContainer>
+            <Date>{date}</Date>
             {plan.map((el) => {
                 return (
                     <ShortList className = {el.type}>{el.text}</ShortList>
